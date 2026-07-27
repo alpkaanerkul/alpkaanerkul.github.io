@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OfficeQueue — Case Study — Alp Kaan Erkul</title>
+<meta name="description" content="OfficeQueue: a constraint-aware, real-time visitor scheduling system for executive offices, built with Next.js and Supabase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="reg tl" aria-hidden="true"></div>
+<div class="reg tr" aria-hidden="true"></div>
+<div class="reg bl" aria-hidden="true"></div>
+<div class="reg br" aria-hidden="true"></div>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="masthead-row">
+      <div class="wordmark">A. KAAN ERKUL <strong>— WORKING NOTES</strong></div>
+      <nav class="top-nav" aria-label="Section navigation">
+        <a href="../index.html#work">All work</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section style="padding-top:44px;">
+    <a class="back-link" href="../index.html#work">&larr; Back to selected works</a>
+
+    <p class="case-eyebrow">Next.js / Supabase — Deployed Prototype</p>
+    <h1 class="case-title">OfficeQueue</h1>
+    <p class="case-tagline">Constraint-aware visitor scheduling for executive offices.</p>
+
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <p class="k">Project type</p>
+        <p class="v">Independent working prototype</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Role</p>
+        <p class="v">Product concept, workflow analysis, scheduling logic, interface design, development</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Primary users</p>
+        <p class="v">Visitors, executive assistants, office administrators</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Development status</p>
+        <p class="v">Deployed — live and in use</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Core technologies</p>
+        <p class="v">Next.js, TypeScript, Supabase, PostgreSQL, Server Actions, Supabase Realtime, Vercel</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">01</p>
+    <h2>Overview</h2>
+    
+    <p>OfficeQueue is a scheduling application for executive offices, where appointment planning depends on
+    more than calendar availability. Visitors submit a request through a public form; the system evaluates
+    organisational and temporal constraints, finds the first feasible slot within a 14-day horizon, and places
+    the request automatically.</p>
+    <p>A password-protected management panel gives a live view of the daily and weekly schedule, travel
+    windows, and protected time blocks. Supabase Realtime keeps multiple screens synchronised without a page
+    refresh.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">02</p>
+    <h2>The problem</h2>
+    
+    <p>Executive-office schedules are often run through calls, messages, handwritten notes, and manually
+    maintained calendars. "Find an available time" sounds simple, but availability is actually shaped by
+    working hours, prayer-time blocks, travel windows, existing meetings, priority levels, deadlines, and
+    minimum intervals between meetings — arriving from multiple channels at once. Manual scheduling creates
+    overlapping meetings, missed constraints, inconsistent prioritisation, and schedule drift between devices.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">03</p>
+    <h2>Design challenge</h2>
+    
+    <p class="pull">How can informal executive-office rules and shifting constraints be translated into an
+    automatic scheduling system without removing the assistant's discretion?</p>
+    <p>A fully manual system preserves flexibility but creates constant coordination work. A fully rigid
+    automatic system risks ignoring exceptions or last-minute executive decisions. OfficeQueue combines
+    automatic slot allocation and explicit constraints with real-time visibility and manual override — the
+    goal is to reduce routine scheduling work, not to remove human judgement from exceptional cases.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">04</p>
+    <h2>Core workflow</h2>
+    
+    <div class="workflow">Visitor submits request
+      &darr;
+Request data validated
+      &darr;
+Duration, priority and deadline interpreted
+      &darr;
+Candidate working days generated
+      &darr;
+Prayer, travel and occupied periods removed
+      &darr;
+Minimum buffers applied
+      &darr;
+Earliest feasible slot selected
+      &darr;
+Appointment stored in PostgreSQL
+      &darr;
+Management screens updated in real time</div>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">05</p>
+    <h2>Key capabilities</h2>
+    
+    <h3>Constraint-aware scheduling engine</h3>
+    <p>A single allocation process combines working-calendar rules, office hours, prayer-time blocks, travel
+    periods, existing meetings, minimum buffers, duration, deadline, and priority — kept as a separate,
+    independently testable module from the interface.</p>
+    <h3>Prayer-time and travel integration</h3>
+    <p>Prayer-time blocks come from the Aladhan API using the Diyanet calculation method, cached to reduce
+    repeated requests, with an astronomical-calculation fallback if the service is unavailable. Travel periods
+    are defined by explicit departure/return times and excluded automatically — treated as a constraint on the
+    whole system, not a note on a calendar.</p>
+    <h3>Visual scheduling rail and real-time sync</h3>
+    <p>The management panel shows appointments, prayer times, travel periods, and open capacity on one visual
+    timeline. Supabase Realtime pushes changes to every connected screen immediately, so different devices
+    don't act on outdated information.</p>
+    <h3>Manual intervention, by design</h3>
+    <p>The assistant can create, edit, move, or remove appointments manually at any point — a deliberate
+    decision, since not every scheduling exception should be encoded as a permanent rule.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">06</p>
+    <h2>Architecture</h2>
+    
+    <div class="diagram">Next.js application
+  |
+  |-- Public visitor form (/kayit)
+  |-- Password-protected management panel (/yonetim)
+  |-- Daily / weekly scheduling rail
+  |
+  |-- Server Actions
+  |     |-- Request validation
+  |     `-- Appointment create / update / delete
+  |
+  |-- Scheduling engine
+  |     |-- Working-day, office-hour, prayer, travel rules
+  |     |-- Conflict, priority, deadline, buffer logic
+  |     `-- 14-day slot search
+  |
+  `-- Supabase
+        |-- PostgreSQL
+        `-- Realtime change subscriptions</div>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">07</p>
+    <h2>Key design decisions</h2>
+        <ul>
+      <li><strong>Rules as explicit system logic</strong> — office constraints are represented as inspectable scheduling rules, not just knowledge in the assistant's head.</li>
+      <li><strong>Automatic allocation with manual override</strong> — the system handles routine decisions but doesn't assume every executive-office judgement can be formalised.</li>
+      <li><strong>Earliest feasible slot, not an idealised optimum</strong> — keeps the logic understandable and predictable rather than opaque.</li>
+      <li><strong>Scheduling logic separated from the interface</strong> — improves testability and makes future rule changes safer.</li>
+      <li><strong>Local organisational context</strong> — the Turkish interface and prayer-time integration reflect the real context the prototype was built for, not translated in afterward.</li>
+    </ul>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">08</p>
+    <h2>Current status and limitations</h2>
+    
+    <div class="status-box">
+      <span class="tag">Deployed — single-office prototype</span>
+      <p>OfficeQueue is live and handling real scheduling for a single executive office. It has not been
+      tested at multi-executive or enterprise scale.</p>
+    </div>
+        <ul>
+      <li>single-password administration, no individual accounts or role hierarchy</li>
+      <li>no multi-executive scheduling or calendar-platform integration (Google/Outlook/Exchange)</li>
+      <li>no automated email or SMS notifications, no visitor confirmation workflow</li>
+      <li>no formal usability testing or production security audit</li>
+      <li>no long-term organisational evaluation of adoption or time saved</li>
+    </ul>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">09</p>
+    <h2>Reflection</h2>
+    
+    <p>OfficeQueue began as a scheduling problem, but the harder design questions were organisational: which
+    routines could be formalised, which exceptions had to stay under human control, how much rigidity people
+    would actually accept.</p>
+    <p class="pull">A scheduling system can calculate free time perfectly and still fail if it doesn't reflect
+    how decisions are actually made. OfficeQueue explores the boundary between automation and discretion —
+    reducing coordination work where constraints are explicit, while leaving room for what stays contextual or
+    political.</p>
+
+  </section>
+
+  <div class="case-nav sheet" style="padding-bottom:8px;">
+    <a href="../index.html#work">&larr; Back to selected works</a>
+    <a href="../index.html#contact">Get in touch &rarr;</a>
+  </div>
+
+  <footer id="contact" style="padding-top:24px;">
+    <div class="foot-row">
+      <div class="foot-links">
+        <a href="mailto:benkaanerkul@gmail.com" data-copy-email title="Click to copy email address">Email (personal)</a>
+        <a href="mailto:erkul24@itu.edu.tr" data-copy-email title="Click to copy email address">Email (academic)</a>
+        <a href="https://www.linkedin.com/in/alpkaanerkul/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/alpkaanerkul" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="toast" id="emailToast" role="status" aria-live="polite"></div>
+
+<script>
+  (function () {
+    var toast = document.getElementById('emailToast');
+    var hideTimer = null;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+    }
+    var links = document.querySelectorAll('a[data-copy-email]');
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var email = link.getAttribute('href').replace(/^mailto:/, '');
+        if (navigator.clipboard && window.isSecureContext) {
+          e.preventDefault();
+          navigator.clipboard.writeText(email).then(function () {
+            showToast('Copied — ' + email);
+          }).catch(function () {
+            window.location.href = link.getAttribute('href');
+          });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

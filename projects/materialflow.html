@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaterialFlow — Case Study — Alp Kaan Erkul</title>
+<meta name="description" content="MaterialFlow: an Excel/VBA operational system for traceable material requests and dispatch tracking on distributed construction sites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="reg tl" aria-hidden="true"></div>
+<div class="reg tr" aria-hidden="true"></div>
+<div class="reg bl" aria-hidden="true"></div>
+<div class="reg br" aria-hidden="true"></div>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="masthead-row">
+      <div class="wordmark">A. KAAN ERKUL <strong>— WORKING NOTES</strong></div>
+      <nav class="top-nav" aria-label="Section navigation">
+        <a href="../index.html#work">All work</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section style="padding-top:44px;">
+    <a class="back-link" href="../index.html#work">&larr; Back to selected works</a>
+
+    <p class="case-eyebrow">Excel / VBA — Working Prototype</p>
+    <h1 class="case-title">MaterialFlow</h1>
+    <p class="case-tagline">Traceable material-request and dispatch management for distributed construction sites.</p>
+
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <p class="k">Project type</p>
+        <p class="v">Independent operational system, developed from a real technical-office workflow</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Role</p>
+        <p class="v">Workflow analysis, process design, workbook architecture, VBA automation, interface design</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Primary users</p>
+        <p class="v">Site engineers, technical-office teams, material coordinators, warehouse personnel</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Development status</p>
+        <p class="v">Technical workflow completed; not organisationally rolled out — I moved into a new role before adoption began</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Core technologies</p>
+        <p class="v">Microsoft Excel, VBA, structured worksheets, data validation, automated PDF export, local file-based archiving</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">01</p>
+    <h2>Overview</h2>
+    
+    <p>MaterialFlow is a material-request and dispatch-management system built for construction projects
+    operating across multiple sites and locations. It was designed to replace inconsistent request documents
+    and fragmented material-tracking files with a single controlled workflow.</p>
+    <p>Users prepare requests through a structured Excel interface. The system validates the information,
+    generates a unique request number, produces a formal request document, exports it as a PDF, and records
+    each requested item in a central archive. As materials are dispatched, the system records delivered
+    quantities and calculates what remains outstanding — while keeping the familiar Excel environment project
+    teams already used.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">02</p>
+    <h2>The problem</h2>
+    
+    <p>Material requests from distributed sites were typically communicated through independently prepared
+    Excel files, handwritten forms, email attachments, calls, and informal lists — even where a standard form
+    existed, the information was entered differently by each project or person. In practice this produced:</p>
+        <ul>
+      <li>inconsistent request formats and incomplete project or location information</li>
+      <li>duplicated requests and unclear document numbering</li>
+      <li>difficulty identifying the latest version of a file</li>
+      <li>a weak link between requests and dispatch records</li>
+      <li>uncertainty about how much material remained outstanding</li>
+      <li>repeated manual preparation of formal documents</li>
+    </ul>
+
+    <p>A material request is not just a document — it's an operational record that has to stay consistent as
+    it moves between site teams, the technical office, the warehouse, and management.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">03</p>
+    <h2>Design challenge</h2>
+    
+    <p class="pull">How can material requests be standardised and made traceable without requiring project
+    personnel to learn an unfamiliar enterprise platform?</p>
+    <p>A fully manual Excel process preserves familiarity but gives up consistency and history. A new
+    standalone platform offers stronger data control, but introduces training requirements, new logins, and
+    implementation resistance — the classic tension this whole research interest is built around. MaterialFlow
+    took an incremental approach instead: keep Excel as the user-facing environment, but place controlled
+    fields, automation, document generation, and central tracking around it.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">04</p>
+    <h2>Core workflow</h2>
+    
+    <div class="workflow">User creates material request
+      &darr;
+Project and location information selected
+      &darr;
+Material, unit and quantity entered
+      &darr;
+Required fields validated
+      &darr;
+Unique request number generated
+      &darr;
+Formal request document populated
+      &darr;
+Request line items written to central archive
+      &darr;
+PDF generated and stored
+      &darr;
+Material dispatch recorded
+      &darr;
+Outstanding quantity recalculated</div>
+    <p>The printable document and the tracking record are generated from the same source information, which
+    removes the need to enter identical data twice into separate files.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">05</p>
+    <h2>Key capabilities</h2>
+    
+    <h3>Standardised request creation</h3>
+    <p>A consistent request structure — project, location, discipline, material, unit, quantity, delivery
+    requirement, notes — reduces the variation technical-office teams previously had to reconcile by hand.</p>
+    <h3>Request numbering and formal document generation</h3>
+    <p>Each completed request receives a structured number, supporting search, referencing, and linking
+    requests to dispatch records without ambiguous filenames. Entered data is transferred automatically into
+    a printable template — no manual copying from an entry table into a separate form.</p>
+    <h3>Central line-item archive</h3>
+    <p>Every material within a request is written into the archive as an individual structured row, so a
+    request can be read both as a formal document and as searchable operational data — filterable by request
+    number, project, location, date, material, and dispatch status.</p>
+    <h3>Dispatch and outstanding-quantity tracking</h3>
+    <p>Dispatched quantities are recorded against the original request; outstanding quantity is calculated as
+    requested minus dispatched, so a request stays visible until fully delivered — whether fulfilled in one
+    delivery or several partial ones.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">06</p>
+    <h2>Architecture</h2>
+    
+    <div class="diagram">Excel/VBA workbook
+  |
+  |-- User-facing request interface
+  |     |-- Project selection
+  |     |-- Location-dependent fields
+  |     `-- Material, quantity, delivery entry
+  |
+  |-- VBA automation layer
+  |     |-- Validation, numbering, template population
+  |     |-- Archive insertion and search
+  |     `-- PDF generation and file naming
+  |
+  |-- Central data layer
+  |     |-- Request archive / dispatch records
+  |     |-- Outstanding quantities
+  |     `-- Material master data
+  |
+  `-- Output layer
+        |-- Printable request form
+        `-- PDF archive</div>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">07</p>
+    <h2>Key design decisions</h2>
+        <ul>
+      <li><strong>Excel as the adoption layer</strong> — built inside a tool project and technical-office staff already knew, so people could benefit without learning a new interface first.</li>
+      <li><strong>One source for document and data</strong> — the formal request and the archive record come from the same input, removing the risk of the sent document and the tracked record drifting apart.</li>
+      <li><strong>Traceability beyond document creation</strong> — the workflow keeps following a request through dispatch and remaining quantity, not just to the point the PDF is generated.</li>
+      <li><strong>Familiar interface, stronger governance</strong> — key actions moved from unrestricted cell editing into controlled procedures: required fields, controlled lists, structured records, protected system areas.</li>
+    </ul>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">08</p>
+    <h2>Current status and limitations</h2>
+    
+    <div class="status-box">
+      <span class="tag">Technically complete — not organisationally deployed</span>
+      <p>MaterialFlow's technical workflow was finished and demonstrated the intended automation end to end.
+      Wider organisational rollout and any real measurement of adoption or time savings did not happen,
+      because I moved into a new role before that rollout began. I consider that gap — a working tool that
+      never became an adopted routine — one of the more useful things the project taught me, not something to
+      round up or smooth over.</p>
+    </div>
+        <ul>
+      <li>dependence on a macro-enabled Excel workbook and local file paths</li>
+      <li>no central database, user authentication, or role-based permissions</li>
+      <li>limited simultaneous multi-user access; possible version conflicts between copies</li>
+      <li>no ERP, accounting, or procurement integration</li>
+      <li>no formal usability study or measurement of error reduction</li>
+    </ul>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">09</p>
+    <h2>Reflection</h2>
+    
+    <p>MaterialFlow began as an attempt to standardise a request format. The deeper problem turned out to be
+    the movement of information between people — who owns the process, how project-specific differences are
+    represented, when a request should count as complete, whether familiar tools can support stronger
+    organisational control.</p>
+    <p class="pull">A perfectly formatted request form does not, by itself, provide visibility. Value emerges
+    when information stays traceable across the whole workflow — and a functioning tool is only one part of
+    that; the rest depends on process ownership, management support, and who is responsible for keeping the
+    workflow alive.</p>
+    <p>That gap between technical readiness and realised value is the thread that runs from this project into
+    the research questions I want to study formally.</p>
+
+  </section>
+
+  <div class="case-nav sheet" style="padding-bottom:8px;">
+    <a href="../index.html#work">&larr; Back to selected works</a>
+    <a href="../index.html#contact">Get in touch &rarr;</a>
+  </div>
+
+  <footer id="contact" style="padding-top:24px;">
+    <div class="foot-row">
+      <div class="foot-links">
+        <a href="mailto:benkaanerkul@gmail.com" data-copy-email title="Click to copy email address">Email (personal)</a>
+        <a href="mailto:erkul24@itu.edu.tr" data-copy-email title="Click to copy email address">Email (academic)</a>
+        <a href="https://www.linkedin.com/in/alpkaanerkul/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/alpkaanerkul" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="toast" id="emailToast" role="status" aria-live="polite"></div>
+
+<script>
+  (function () {
+    var toast = document.getElementById('emailToast');
+    var hideTimer = null;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+    }
+    var links = document.querySelectorAll('a[data-copy-email]');
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var email = link.getAttribute('href').replace(/^mailto:/, '');
+        if (navigator.clipboard && window.isSecureContext) {
+          e.preventDefault();
+          navigator.clipboard.writeText(email).then(function () {
+            showToast('Copied — ' + email);
+          }).catch(function () {
+            window.location.href = link.getAttribute('href');
+          });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

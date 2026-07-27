@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valora — Case Study — Alp Kaan Erkul</title>
+<meta name="description" content="Valora: a hybrid web-Excel platform for construction progress-payment certification (hakediş), built with FastAPI and openpyxl.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="reg tl" aria-hidden="true"></div>
+<div class="reg tr" aria-hidden="true"></div>
+<div class="reg bl" aria-hidden="true"></div>
+<div class="reg br" aria-hidden="true"></div>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="masthead-row">
+      <div class="wordmark">A. KAAN ERKUL <strong>— WORKING NOTES</strong></div>
+      <nav class="top-nav" aria-label="Section navigation">
+        <a href="../index.html#work">All work</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section style="padding-top:44px;">
+    <a class="back-link" href="../index.html#work">&larr; Back to selected works</a>
+
+    <p class="case-eyebrow">FastAPI / Excel Automation — Working Prototype</p>
+    <h1 class="case-title">Valora</h1>
+    <p class="case-tagline">Construction valuation, progress-payment certification, and reporting — governed around the Excel documents engineers already use.</p>
+
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <p class="k">Project type</p>
+        <p class="v">Independent working prototype, in active development</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Role</p>
+        <p class="v">Product concept, workflow design, system architecture, development</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Primary users</p>
+        <p class="v">Project coordinators, technical-office engineers, site managers, commercial teams</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Development status</p>
+        <p class="v">Local working prototype — not yet a production platform</p>
+      </div>
+      <div class="meta-cell">
+        <p class="k">Core technologies</p>
+        <p class="v">FastAPI, Python, SQLite, openpyxl, Jinja2, JavaScript, Leaflet.js, LibreOffice, Poppler</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">01</p>
+    <h2>Overview</h2>
+    
+    <p>Valora is a construction-management prototype for periodic progress-payment certification — known as
+    <em>hakediş</em> in Turkish practice. It manages the relationship between Bills of Quantities, completed
+    work, cumulative progress, financial deductions, and formally structured Excel documents across payment
+    periods.</p>
+    <p>Rather than replacing Excel, Valora places a controlled web application around it: generating,
+    versioning, validating, and archiving protected workbooks while keeping the working environment engineers
+    already know.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">02</p>
+    <h2>The problem</h2>
+    
+    <p>Contractors are typically paid through periodic valuations based on completed quantities — each period
+    involving measured quantities against a Bill of Quantities, cumulative calculations, advance and retention
+    deductions, VAT withholding, and formally structured approval documents. These workflows are usually
+    managed through manually edited Excel files, which creates:</p>
+        <ul>
+      <li>inconsistent file structures between engineers and projects</li>
+      <li>vulnerable formulas and unprotected cells</li>
+      <li>manual, error-prone transfer of cumulative quantities between periods</li>
+      <li>files overwritten between periods, with unclear version history</li>
+      <li>limited control over who can edit or delete records</li>
+    </ul>
+
+    <p>A single typing or formula error can propagate through an entire chain of dependent financial
+    calculations.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">03</p>
+    <h2>Design challenge</h2>
+    
+    <p class="pull">How can a construction organisation introduce standardisation, traceability, and version
+    control without forcing engineers to abandon familiar Excel-based workflows?</p>
+    <p>A completely new interface risks resistance and demands real behavioural change; leaving everything in
+    Excel keeps familiarity but sacrifices governance. Valora's answer is a transitional strategy: keep Excel
+    as the working document, but move generation, validation, history, and control into a central system
+    around it.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">04</p>
+    <h2>Core workflow</h2>
+    
+    <div class="workflow">Create project
+      &darr;
+Define contract and project metadata
+      &darr;
+Import or define Bill of Quantities
+      &darr;
+Create payment period
+      &darr;
+Generate protected Excel workbook
+      &darr;
+Engineer records current-period quantities
+      &darr;
+Validate and archive completed workbook
+      &darr;
+Generate client-facing PDF document set
+      &darr;
+Start the next payment period, carrying forward cumulative quantities</div>
+    <p>Each period is a separate historical record — the next period is created from the completed previous
+    one rather than overwriting it.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">05</p>
+    <h2>Key capabilities</h2>
+    
+    <h3>Structured workbook generation</h3>
+    <p>Valora programmatically generates a protected, formula-driven workbook per project and period — nine
+    interconnected sheets, roughly 1,000 lines of generation logic, controlling formulas, cell protection,
+    print areas, and metadata.</p>
+    <h3>Period rollover</h3>
+    <p>When a new period begins, Valora reads the completed previous workbook and carries cumulative
+    quantities forward automatically (new previous quantity = previous period's previous + current), while the
+    old period stays archived and unchanged — removing manual reconciliation between files.</p>
+    <h3>Naming, versioning, and role-based access</h3>
+    <p>Structured project/period codes are generated from configurable metadata; the system asks for explicit
+    confirmation rather than silently renaming or overwriting records on conflict. Administrators, coordinators,
+    site managers, and viewers each get different permissions — treated as organisational governance expressed
+    through software, not just an access-control feature.</p>
+    <h3>One-click PDF export and daily site reporting</h3>
+    <p>The complete workbook converts to a print-ready, client-facing PDF set via headless LibreOffice and
+    Poppler. A separate daily-report module standardises subcontractor, production, material, equipment, and
+    labour reporting that would otherwise scatter across WhatsApp and paper.</p>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">06</p>
+    <h2>Architecture</h2>
+    
+    <div class="diagram">FastAPI web application
+  |
+  |-- Project and contract management
+  |-- Payment-period lifecycle
+  |-- User roles and permissions
+  |-- Daily site reporting / cost analysis
+  |
+  |-- SQLite database
+  |
+  |-- openpyxl workbook generator
+  |     `-- Protected nine-sheet Excel workbook
+  |
+  `-- Document pipeline
+        |-- LibreOffice headless
+        `-- Poppler PDF processing</div>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">07</p>
+    <h2>Key design decisions</h2>
+        <ul>
+      <li><strong>Preserve familiar tools</strong> — engineers keep working in Excel; Valora controls how the workbook is generated, stored, and carried between periods.</li>
+      <li><strong>History instead of overwrite</strong> — every period is a separate record; auditability is prioritised over the convenience of one endlessly-edited file.</li>
+      <li><strong>Governance through system rules</strong> — role restrictions, locked formulas, and naming conventions define who can change what, and when.</li>
+      <li><strong>Incremental digital transition</strong> — the bet is that stronger adoption comes from wrapping control and integration around existing routines, not replacing them outright.</li>
+    </ul>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">08</p>
+    <h2>Current status and limitations</h2>
+    
+    <div class="status-box">
+      <span class="tag">Working prototype — actively developed</span>
+      <p>Valora runs locally as a working prototype and has not been deployed as a production platform.</p>
+    </div>
+        <ul>
+      <li>SQLite rather than a production-scale database; no formal security audit or load testing</li>
+      <li>no integration with accounting or ERP platforms</li>
+      <li>no formal usability study; no validation across different contract standards</li>
+      <li>reliance on LibreOffice for document conversion</li>
+      <li>financial formulas require project- and contract-specific verification before professional use</li>
+    </ul>
+
+  </section>
+
+  <section class="case-section sheet">
+    <p class="case-num">09</p>
+    <h2>Reflection</h2>
+    
+    <p>Valora began as a technical attempt to improve progress-payment documents; the deeper issue turned out
+    to be organisational — who owns the process, how standards are maintained, which familiar routines should
+    be preserved, and when incremental integration beats wholesale replacement.</p>
+    <p class="pull">Software functionality does not automatically become organisational capability. A
+    technically complete system can still fail to create value if users reject its workflow, management
+    doesn't support implementation, or project-specific routines conflict with corporate standards.</p>
+    <p>Valora is both a working prototype and an ongoing exploration of how construction organisations might
+    move from fragmented files toward structured, governed digital processes.</p>
+
+  </section>
+
+  <div class="case-nav sheet" style="padding-bottom:8px;">
+    <a href="../index.html#work">&larr; Back to selected works</a>
+    <a href="../index.html#contact">Get in touch &rarr;</a>
+  </div>
+
+  <footer id="contact" style="padding-top:24px;">
+    <div class="foot-row">
+      <div class="foot-links">
+        <a href="mailto:benkaanerkul@gmail.com" data-copy-email title="Click to copy email address">Email (personal)</a>
+        <a href="mailto:erkul24@itu.edu.tr" data-copy-email title="Click to copy email address">Email (academic)</a>
+        <a href="https://www.linkedin.com/in/alpkaanerkul/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/alpkaanerkul" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="toast" id="emailToast" role="status" aria-live="polite"></div>
+
+<script>
+  (function () {
+    var toast = document.getElementById('emailToast');
+    var hideTimer = null;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+    }
+    var links = document.querySelectorAll('a[data-copy-email]');
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var email = link.getAttribute('href').replace(/^mailto:/, '');
+        if (navigator.clipboard && window.isSecureContext) {
+          e.preventDefault();
+          navigator.clipboard.writeText(email).then(function () {
+            showToast('Copied — ' + email);
+          }).catch(function () {
+            window.location.href = link.getAttribute('href');
+          });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
