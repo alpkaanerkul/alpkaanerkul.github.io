@@ -381,6 +381,37 @@
   }
   .foot-links a{ text-decoration:none; }
   .foot-links a:hover{ text-decoration:underline; }
+
+  /* ---------- copy-email toast ---------- */
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:28px;
+    transform:translate(-50%, 12px);
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.02em;
+    padding:10px 16px;
+    border-radius:2px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.18s ease, transform 0.18s ease;
+    z-index:60;
+    white-space:nowrap;
+  }
+  .toast::before{
+    content:"✓ ";
+    color:#8FBF9F;
+  }
+  .toast.show{
+    opacity:1;
+    transform:translate(-50%, 0);
+  }
+  @media (max-width:480px){
+    .toast{ font-size:11.5px; padding:9px 14px; max-width:88vw; white-space:normal; text-align:center; }
+  }
 </style>
 </head>
 <body>
@@ -421,7 +452,7 @@
     </div>
     <div class="cta-row">
       <a class="btn primary" href="Erkul_AlpKaan_CV.pdf">Download CV ↓</a>
-      <a class="btn" href="mailto:benkaanerkul@gmail.com">benkaanerkul@gmail.com</a>
+      <a class="btn" href="mailto:benkaanerkul@gmail.com" data-copy-email title="Click to copy email address">benkaanerkul@gmail.com</a>
       <a class="btn" href="https://www.linkedin.com/in/alpkaanerkul/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </section>
@@ -588,8 +619,8 @@
   <footer id="contact">
     <div class="foot-row">
       <div class="foot-links">
-        <a href="mailto:benkaanerkul@gmail.com">Email (personal)</a>
-        <a href="mailto:erkul24@itu.edu.tr">Email (academic)</a>
+        <a href="mailto:benkaanerkul@gmail.com" data-copy-email title="Click to copy email address">Email (personal)</a>
+        <a href="mailto:erkul24@itu.edu.tr" data-copy-email title="Click to copy email address">Email (academic)</a>
         <a href="https://www.linkedin.com/in/alpkaanerkul/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/alpkaanerkul" target="_blank" rel="noopener">GitHub</a>
       </div>
@@ -597,5 +628,40 @@
   </footer>
 
 </div>
+
+<div class="toast" id="emailToast" role="status" aria-live="polite"></div>
+
+<script>
+  (function () {
+    var toast = document.getElementById('emailToast');
+    var hideTimer = null;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    var links = document.querySelectorAll('a[data-copy-email]');
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var email = link.getAttribute('href').replace(/^mailto:/, '');
+        if (navigator.clipboard && window.isSecureContext) {
+          e.preventDefault();
+          navigator.clipboard.writeText(email).then(function () {
+            showToast('Copied — ' + email);
+          }).catch(function () {
+            window.location.href = link.getAttribute('href');
+          });
+        }
+        // else: let the mailto: link behave normally (older browsers / non-HTTPS contexts)
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
