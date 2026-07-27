@@ -355,6 +355,17 @@
     margin:0 0 8px;
   }
   .proj p{ font-size:14px; margin-bottom:0; }
+  .proj-link{
+    display:inline-block;
+    margin-top:12px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--steel);
+    text-decoration:none;
+    border-bottom:1px solid var(--steel);
+    padding-bottom:1px;
+  }
+  .proj-link:hover{ color:var(--rust); border-color:var(--rust); }
 
   /* ---------- footer ---------- */
   footer{
@@ -464,7 +475,7 @@
         <h2 class="section-title" id="research-h">What I'm trying to understand</h2>
         <p class="section-intro">
           Technology is the instrument, not the question. The question is what happens organisationally
-          around it; before, during, and after the software itself works as designed.
+          around it — before, during, and after the software itself works as designed.
         </p>
       </div>
     </div>
@@ -522,6 +533,7 @@
         <p class="proj-title">OfficeQueue</p>
         <p>A scheduling and task-prioritisation tool exploring how management routines — deadlines, time
           blocks, constraints — translate into working digital logic. Live and in use.</p>
+        <a class="proj-link" href="https://office-queue.vercel.app/demo" target="_blank" rel="noopener">View demo ↗</a>
       </div>
       <div class="proj">
         <p class="proj-tag">Working prototype — in development</p>
@@ -561,7 +573,7 @@
           <p class="tl-role">Technical Assistant to the CEO</p>
           <p class="tl-org">YDA Group, Ankara</p>
           <p class="tl-desc">Executive decision support on major capital and procurement decisions — reviewing
-            international supply contracts (nearly total €15M), contractual and financing risk, and preparing
+            international supply contracts (nearly a total of €15M), contractual and financing risk, and preparing
             negotiation positions alongside legal and engineering teams.</p>
         </div>
       </div>
