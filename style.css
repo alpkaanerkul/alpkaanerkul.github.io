@@ -323,9 +323,17 @@
     margin-bottom:14px;
   }
   .pub p{ font-size:14.5px; }
+  .video-label{
+    margin:22px 0 0;
+    font-family:var(--mono);
+    font-size:11.5px !important;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
   .presentation-video{
     aspect-ratio:16 / 9;
-    margin-top:22px;
+    margin-top:8px;
     overflow:hidden;
     background:var(--ink);
   }
@@ -334,6 +342,51 @@
     width:100%;
     height:100%;
     border:0;
+  }
+
+  /* ---------- research agenda ---------- */
+  .agenda-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  .agenda-item{
+    min-height:190px;
+    padding:20px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .agenda-num{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:0.04em;
+  }
+  .agenda-item h3{
+    margin:24px 0 8px;
+    font-size:14px;
+    line-height:1.35;
+    font-weight:600;
+  }
+  .agenda-item p{ font-size:13.5px; }
+  .agenda-methods{
+    max-width:70ch;
+    margin:18px 0 0;
+    font-size:14px;
+  }
+  .agenda-methods span,
+  .proj-impact span{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  @media (max-width:700px){
+    .agenda-grid{ grid-template-columns:1fr; }
+    .agenda-item{ min-height:0; }
+    .agenda-item h3{ margin-top:14px; }
   }
 
   /* ---------- timeline ---------- */
@@ -397,6 +450,12 @@
     margin:0 0 8px;
   }
   .proj p{ font-size:14px; margin-bottom:0; }
+  .proj-impact{
+    padding-top:12px;
+    margin-top:12px !important;
+    border-top:1px solid var(--line);
+    color:var(--ink) !important;
+  }
   .proj-link{
     display:inline-block;
     margin-top:12px;
@@ -425,6 +484,13 @@
     font-size:12px;
     color:var(--muted);
     max-width:44ch;
+  }
+  .site-updated{
+    margin:0;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:0.03em;
   }
   .foot-links{
     display:flex;
