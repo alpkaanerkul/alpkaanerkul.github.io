@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MaterialFlow — Case Study — Alp Kaan Erkul</title>
+<title>MaterialFlow | Case Study | Alp Kaan Erkul</title>
 <meta name="description" content="MaterialFlow: an Excel/VBA operational system for traceable material requests and dispatch tracking on distributed construction sites.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
 
   <header class="masthead">
     <div class="masthead-row">
-      <div class="wordmark">A. KAAN ERKUL <strong>— WORKING NOTES</strong></div>
+      <div class="wordmark">A. KAAN ERKUL <strong>WORKING NOTES</strong></div>
       <nav class="top-nav" aria-label="Section navigation">
         <a href="../index.html#work">All work</a>
         <a href="../index.html#contact">Contact</a>
@@ -32,7 +32,7 @@
   <section style="padding-top:44px;">
     <a class="back-link" href="../index.html#work">&larr; Back to selected works</a>
 
-    <p class="case-eyebrow">Excel / VBA — Working Prototype</p>
+    <p class="case-eyebrow">Excel / VBA: Working Prototype</p>
     <h1 class="case-title">MaterialFlow</h1>
     <p class="case-tagline">Traceable material-request and dispatch management for distributed construction sites.</p>
 
@@ -51,7 +51,7 @@
       </div>
       <div class="meta-cell">
         <p class="k">Development status</p>
-        <p class="v">Technical workflow completed; not organisationally rolled out — I moved into a new role before adoption began</p>
+        <p class="v">Technical workflow completed; not organisationally rolled out because I moved into a new role before adoption began</p>
       </div>
       <div class="meta-cell">
         <p class="k">Core technologies</p>
@@ -70,7 +70,7 @@
     <p>Users prepare requests through a structured Excel interface. The system validates the information,
     generates a unique request number, produces a formal request document, exports it as a PDF, and records
     each requested item in a central archive. As materials are dispatched, the system records delivered
-    quantities and calculates what remains outstanding — while keeping the familiar Excel environment project
+    quantities and calculates what remains outstanding, while keeping the familiar Excel environment project
     teams already used.</p>
 
   </section>
@@ -80,8 +80,8 @@
     <h2>The problem</h2>
     
     <p>Material requests from distributed sites were typically communicated through independently prepared
-    Excel files, handwritten forms, email attachments, calls, and informal lists — even where a standard form
-    existed, the information was entered differently by each project or person. In practice this produced:</p>
+    Excel files, handwritten forms, email attachments, calls, and informal lists. Even where a standard form
+    existed, information was entered differently by each project or person. In practice this produced:</p>
         <ul>
       <li>inconsistent request formats and incomplete project or location information</li>
       <li>duplicated requests and unclear document numbering</li>
@@ -91,7 +91,7 @@
       <li>repeated manual preparation of formal documents</li>
     </ul>
 
-    <p>A material request is not just a document — it's an operational record that has to stay consistent as
+    <p>A material request is not just a document; it is an operational record that has to stay consistent as
     it moves between site teams, the technical office, the warehouse, and management.</p>
 
   </section>
@@ -104,7 +104,7 @@
     personnel to learn an unfamiliar enterprise platform?</p>
     <p>A fully manual Excel process preserves familiarity but gives up consistency and history. A new
     standalone platform offers stronger data control, but introduces training requirements, new logins, and
-    implementation resistance — the classic tension this whole research interest is built around. MaterialFlow
+    implementation resistance. This is the classic tension this whole research interest is built around. MaterialFlow
     took an incremental approach instead: keep Excel as the user-facing environment, but place controlled
     fields, automation, document generation, and central tracking around it.</p>
 
@@ -143,19 +143,19 @@ Outstanding quantity recalculated</div>
     <h2>Key capabilities</h2>
     
     <h3>Standardised request creation</h3>
-    <p>A consistent request structure — project, location, discipline, material, unit, quantity, delivery
-    requirement, notes — reduces the variation technical-office teams previously had to reconcile by hand.</p>
+    <p>A consistent request structure, covering project, location, discipline, material, unit, quantity, delivery
+    requirement, and notes, reduces the variation technical-office teams previously had to reconcile by hand.</p>
     <h3>Request numbering and formal document generation</h3>
     <p>Each completed request receives a structured number, supporting search, referencing, and linking
     requests to dispatch records without ambiguous filenames. Entered data is transferred automatically into
-    a printable template — no manual copying from an entry table into a separate form.</p>
+    a printable template; no manual copying from an entry table into a separate form.</p>
     <h3>Central line-item archive</h3>
     <p>Every material within a request is written into the archive as an individual structured row, so a
-    request can be read both as a formal document and as searchable operational data — filterable by request
+    request can be read both as a formal document and as searchable operational data, filterable by request
     number, project, location, date, material, and dispatch status.</p>
     <h3>Dispatch and outstanding-quantity tracking</h3>
     <p>Dispatched quantities are recorded against the original request; outstanding quantity is calculated as
-    requested minus dispatched, so a request stays visible until fully delivered — whether fulfilled in one
+    requested minus dispatched, so a request stays visible until fully delivered, whether fulfilled in one
     delivery or several partial ones.</p>
 
   </section>
@@ -191,10 +191,10 @@ Outstanding quantity recalculated</div>
     <p class="case-num">07</p>
     <h2>Key design decisions</h2>
         <ul>
-      <li><strong>Excel as the adoption layer</strong> — built inside a tool project and technical-office staff already knew, so people could benefit without learning a new interface first.</li>
-      <li><strong>One source for document and data</strong> — the formal request and the archive record come from the same input, removing the risk of the sent document and the tracked record drifting apart.</li>
-      <li><strong>Traceability beyond document creation</strong> — the workflow keeps following a request through dispatch and remaining quantity, not just to the point the PDF is generated.</li>
-      <li><strong>Familiar interface, stronger governance</strong> — key actions moved from unrestricted cell editing into controlled procedures: required fields, controlled lists, structured records, protected system areas.</li>
+      <li><strong>Excel as the adoption layer:</strong> built inside a tool project and technical-office staff already knew, so people could benefit without learning a new interface first.</li>
+      <li><strong>One source for document and data:</strong> the formal request and the archive record come from the same input, removing the risk of the sent document and the tracked record drifting apart.</li>
+      <li><strong>Traceability beyond document creation:</strong> the workflow keeps following a request through dispatch and remaining quantity, not just to the point the PDF is generated.</li>
+      <li><strong>Familiar interface, stronger governance:</strong> key actions moved from unrestricted cell editing into controlled procedures: required fields, controlled lists, structured records, protected system areas.</li>
     </ul>
 
   </section>
@@ -204,11 +204,11 @@ Outstanding quantity recalculated</div>
     <h2>Current status and limitations</h2>
     
     <div class="status-box">
-      <span class="tag">Technically complete — not organisationally deployed</span>
+      <span class="tag">Technically complete; not organisationally deployed</span>
       <p>MaterialFlow's technical workflow was finished and demonstrated the intended automation end to end.
       Wider organisational rollout and any real measurement of adoption or time savings did not happen,
-      because I moved into a new role before that rollout began. I consider that gap — a working tool that
-      never became an adopted routine — one of the more useful things the project taught me, not something to
+      because I moved into a new role before that rollout began. I consider that gap, a working tool that
+      never became an adopted routine, one of the more useful things the project taught me, not something to
       round up or smooth over.</p>
     </div>
         <ul>
@@ -226,11 +226,11 @@ Outstanding quantity recalculated</div>
     <h2>Reflection</h2>
     
     <p>MaterialFlow began as an attempt to standardise a request format. The deeper problem turned out to be
-    the movement of information between people — who owns the process, how project-specific differences are
+    the movement of information between people: who owns the process, how project-specific differences are
     represented, when a request should count as complete, whether familiar tools can support stronger
     organisational control.</p>
     <p class="pull">A perfectly formatted request form does not, by itself, provide visibility. Value emerges
-    when information stays traceable across the whole workflow — and a functioning tool is only one part of
+    when information stays traceable across the whole workflow. A functioning tool is only one part of
     that; the rest depends on process ownership, management support, and who is responsible for keeping the
     workflow alive.</p>
     <p>That gap between technical readiness and realised value is the thread that runs from this project into
@@ -275,7 +275,7 @@ Outstanding quantity recalculated</div>
         if (navigator.clipboard && window.isSecureContext) {
           e.preventDefault();
           navigator.clipboard.writeText(email).then(function () {
-            showToast('Copied — ' + email);
+            showToast('Copied: ' + email);
           }).catch(function () {
             window.location.href = link.getAttribute('href');
           });
