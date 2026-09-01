@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OfficeQueue — Case Study — Alp Kaan Erkul</title>
+<title>OfficeQueue | Case Study | Alp Kaan Erkul</title>
 <meta name="description" content="OfficeQueue: a constraint-aware, real-time visitor scheduling system for executive offices, built with Next.js and Supabase.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
 
   <header class="masthead">
     <div class="masthead-row">
-      <div class="wordmark">A. KAAN ERKUL <strong>— WORKING NOTES</strong></div>
+      <div class="wordmark">A. KAAN ERKUL <strong>WORKING NOTES</strong></div>
       <nav class="top-nav" aria-label="Section navigation">
         <a href="../index.html#work">All work</a>
         <a href="../index.html#contact">Contact</a>
@@ -32,7 +32,7 @@
   <section style="padding-top:44px;">
     <a class="back-link" href="../index.html#work">&larr; Back to selected works</a>
 
-    <p class="case-eyebrow">Next.js / Supabase — Deployed Prototype</p>
+    <p class="case-eyebrow">Next.js / Supabase: Deployed Prototype</p>
     <h1 class="case-title">OfficeQueue</h1>
     <p class="case-tagline">Constraint-aware visitor scheduling for executive offices.</p>
 
@@ -51,7 +51,7 @@
       </div>
       <div class="meta-cell">
         <p class="k">Development status</p>
-        <p class="v">Deployed — live and in use</p>
+        <p class="v">Deployed; live and in use</p>
       </div>
       <div class="meta-cell">
         <p class="k">Core technologies</p>
@@ -81,7 +81,7 @@
     <p>Executive-office schedules are often run through calls, messages, handwritten notes, and manually
     maintained calendars. "Find an available time" sounds simple, but availability is actually shaped by
     working hours, prayer-time blocks, travel windows, existing meetings, priority levels, deadlines, and
-    minimum intervals between meetings — arriving from multiple channels at once. Manual scheduling creates
+    minimum intervals between meetings, arriving from multiple channels at once. Manual scheduling creates
     overlapping meetings, missed constraints, inconsistent prioritisation, and schedule drift between devices.</p>
 
   </section>
@@ -94,7 +94,7 @@
     automatic scheduling system without removing the assistant's discretion?</p>
     <p>A fully manual system preserves flexibility but creates constant coordination work. A fully rigid
     automatic system risks ignoring exceptions or last-minute executive decisions. OfficeQueue combines
-    automatic slot allocation and explicit constraints with real-time visibility and manual override — the
+    automatic slot allocation and explicit constraints with real-time visibility and manual override. The
     goal is to reduce routine scheduling work, not to remove human judgement from exceptional cases.</p>
 
   </section>
@@ -129,19 +129,19 @@ Management screens updated in real time</div>
     
     <h3>Constraint-aware scheduling engine</h3>
     <p>A single allocation process combines working-calendar rules, office hours, prayer-time blocks, travel
-    periods, existing meetings, minimum buffers, duration, deadline, and priority — kept as a separate,
+    periods, existing meetings, minimum buffers, duration, deadline, and priority, kept as a separate,
     independently testable module from the interface.</p>
     <h3>Prayer-time and travel integration</h3>
     <p>Prayer-time blocks come from the Aladhan API using the Diyanet calculation method, cached to reduce
     repeated requests, with an astronomical-calculation fallback if the service is unavailable. Travel periods
-    are defined by explicit departure/return times and excluded automatically — treated as a constraint on the
+    are defined by explicit departure/return times and excluded automatically. They are treated as a constraint on the
     whole system, not a note on a calendar.</p>
     <h3>Visual scheduling rail and real-time sync</h3>
     <p>The management panel shows appointments, prayer times, travel periods, and open capacity on one visual
     timeline. Supabase Realtime pushes changes to every connected screen immediately, so different devices
     don't act on outdated information.</p>
     <h3>Manual intervention, by design</h3>
-    <p>The assistant can create, edit, move, or remove appointments manually at any point — a deliberate
+    <p>The assistant can create, edit, move, or remove appointments manually at any point. This is a deliberate
     decision, since not every scheduling exception should be encoded as a permanent rule.</p>
 
   </section>
@@ -175,11 +175,11 @@ Management screens updated in real time</div>
     <p class="case-num">07</p>
     <h2>Key design decisions</h2>
         <ul>
-      <li><strong>Rules as explicit system logic</strong> — office constraints are represented as inspectable scheduling rules, not just knowledge in the assistant's head.</li>
-      <li><strong>Automatic allocation with manual override</strong> — the system handles routine decisions but doesn't assume every executive-office judgement can be formalised.</li>
-      <li><strong>Earliest feasible slot, not an idealised optimum</strong> — keeps the logic understandable and predictable rather than opaque.</li>
-      <li><strong>Scheduling logic separated from the interface</strong> — improves testability and makes future rule changes safer.</li>
-      <li><strong>Local organisational context</strong> — the Turkish interface and prayer-time integration reflect the real context the prototype was built for, not translated in afterward.</li>
+      <li><strong>Rules as explicit system logic:</strong> office constraints are represented as inspectable scheduling rules, not just knowledge in the assistant's head.</li>
+      <li><strong>Automatic allocation with manual override:</strong> the system handles routine decisions but doesn't assume every executive-office judgement can be formalised.</li>
+      <li><strong>Earliest feasible slot, not an idealised optimum:</strong> keeps the logic understandable and predictable rather than opaque.</li>
+      <li><strong>Scheduling logic separated from the interface:</strong> improves testability and makes future rule changes safer.</li>
+      <li><strong>Local organisational context:</strong> the Turkish interface and prayer-time integration reflect the real context the prototype was built for, not translated in afterward.</li>
     </ul>
 
   </section>
@@ -189,7 +189,7 @@ Management screens updated in real time</div>
     <h2>Current status and limitations</h2>
     
     <div class="status-box">
-      <span class="tag">Deployed — single-office prototype</span>
+      <span class="tag">Deployed: single-office prototype</span>
       <p>OfficeQueue is live and handling real scheduling for a single executive office. It has not been
       tested at multi-executive or enterprise scale.</p>
     </div>
@@ -211,7 +211,7 @@ Management screens updated in real time</div>
     routines could be formalised, which exceptions had to stay under human control, how much rigidity people
     would actually accept.</p>
     <p class="pull">A scheduling system can calculate free time perfectly and still fail if it doesn't reflect
-    how decisions are actually made. OfficeQueue explores the boundary between automation and discretion —
+    how decisions are actually made. OfficeQueue explores the boundary between automation and discretion.
     reducing coordination work where constraints are explicit, while leaving room for what stays contextual or
     political.</p>
 
@@ -254,7 +254,7 @@ Management screens updated in real time</div>
         if (navigator.clipboard && window.isSecureContext) {
           e.preventDefault();
           navigator.clipboard.writeText(email).then(function () {
-            showToast('Copied — ' + email);
+            showToast('Copied: ' + email);
           }).catch(function () {
             window.location.href = link.getAttribute('href');
           });
