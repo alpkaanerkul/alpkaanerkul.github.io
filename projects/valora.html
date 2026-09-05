@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valora — Case Study — Alp Kaan Erkul</title>
+<title>Valora | Case Study | Alp Kaan Erkul</title>
 <meta name="description" content="Valora: a hybrid web-Excel platform for construction progress-payment certification (hakediş), built with FastAPI and openpyxl.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
 
   <header class="masthead">
     <div class="masthead-row">
-      <div class="wordmark">A. KAAN ERKUL <strong>— WORKING NOTES</strong></div>
+      <div class="wordmark">A. KAAN ERKUL <strong>WORKING NOTES</strong></div>
       <nav class="top-nav" aria-label="Section navigation">
         <a href="../index.html#work">All work</a>
         <a href="../index.html#contact">Contact</a>
@@ -32,9 +32,9 @@
   <section style="padding-top:44px;">
     <a class="back-link" href="../index.html#work">&larr; Back to selected works</a>
 
-    <p class="case-eyebrow">FastAPI / Excel Automation — Working Prototype</p>
+    <p class="case-eyebrow">FastAPI / Excel Automation: Working Prototype</p>
     <h1 class="case-title">Valora</h1>
-    <p class="case-tagline">Construction valuation, progress-payment certification, and reporting — governed around the Excel documents engineers already use.</p>
+    <p class="case-tagline">Construction valuation, progress-payment certification, and reporting, all governed around the Excel documents engineers already use.</p>
 
     <div class="meta-grid">
       <div class="meta-cell">
@@ -51,7 +51,7 @@
       </div>
       <div class="meta-cell">
         <p class="k">Development status</p>
-        <p class="v">Local working prototype — not yet a production platform</p>
+        <p class="v">Local working prototype; not yet a production platform</p>
       </div>
       <div class="meta-cell">
         <p class="k">Core technologies</p>
@@ -64,7 +64,7 @@
     <p class="case-num">01</p>
     <h2>Overview</h2>
     
-    <p>Valora is a construction-management prototype for periodic progress-payment certification — known as
+    <p>Valora is a construction-management prototype for periodic progress-payment certification, known as
     <em>hakediş</em> in Turkish practice. It manages the relationship between Bills of Quantities, completed
     work, cumulative progress, financial deductions, and formally structured Excel documents across payment
     periods.</p>
@@ -78,7 +78,7 @@
     <p class="case-num">02</p>
     <h2>The problem</h2>
     
-    <p>Contractors are typically paid through periodic valuations based on completed quantities — each period
+    <p>Contractors are typically paid through periodic valuations based on completed quantities. Each period
     involving measured quantities against a Bill of Quantities, cumulative calculations, advance and retention
     deductions, VAT withholding, and formally structured approval documents. These workflows are usually
     managed through manually edited Excel files, which creates:</p>
@@ -129,7 +129,7 @@ Validate and archive completed workbook
 Generate client-facing PDF document set
       &darr;
 Start the next payment period, carrying forward cumulative quantities</div>
-    <p>Each period is a separate historical record — the next period is created from the completed previous
+    <p>Each period is a separate historical record. The next period is created from the completed previous
     one rather than overwriting it.</p>
 
   </section>
@@ -139,17 +139,17 @@ Start the next payment period, carrying forward cumulative quantities</div>
     <h2>Key capabilities</h2>
     
     <h3>Structured workbook generation</h3>
-    <p>Valora programmatically generates a protected, formula-driven workbook per project and period — nine
+    <p>Valora programmatically generates a protected, formula-driven workbook per project and period: nine
     interconnected sheets, roughly 1,000 lines of generation logic, controlling formulas, cell protection,
     print areas, and metadata.</p>
     <h3>Period rollover</h3>
     <p>When a new period begins, Valora reads the completed previous workbook and carries cumulative
     quantities forward automatically (new previous quantity = previous period's previous + current), while the
-    old period stays archived and unchanged — removing manual reconciliation between files.</p>
+    old period stays archived and unchanged, removing manual reconciliation between files.</p>
     <h3>Naming, versioning, and role-based access</h3>
     <p>Structured project/period codes are generated from configurable metadata; the system asks for explicit
     confirmation rather than silently renaming or overwriting records on conflict. Administrators, coordinators,
-    site managers, and viewers each get different permissions — treated as organisational governance expressed
+    site managers, and viewers each get different permissions. This is organisational governance expressed
     through software, not just an access-control feature.</p>
     <h3>One-click PDF export and daily site reporting</h3>
     <p>The complete workbook converts to a print-ready, client-facing PDF set via headless LibreOffice and
@@ -184,10 +184,10 @@ Start the next payment period, carrying forward cumulative quantities</div>
     <p class="case-num">07</p>
     <h2>Key design decisions</h2>
         <ul>
-      <li><strong>Preserve familiar tools</strong> — engineers keep working in Excel; Valora controls how the workbook is generated, stored, and carried between periods.</li>
-      <li><strong>History instead of overwrite</strong> — every period is a separate record; auditability is prioritised over the convenience of one endlessly-edited file.</li>
-      <li><strong>Governance through system rules</strong> — role restrictions, locked formulas, and naming conventions define who can change what, and when.</li>
-      <li><strong>Incremental digital transition</strong> — the bet is that stronger adoption comes from wrapping control and integration around existing routines, not replacing them outright.</li>
+      <li><strong>Preserve familiar tools:</strong> engineers keep working in Excel; Valora controls how the workbook is generated, stored, and carried between periods.</li>
+      <li><strong>History instead of overwrite:</strong> every period is a separate record; auditability is prioritised over the convenience of one endlessly-edited file.</li>
+      <li><strong>Governance through system rules:</strong> role restrictions, locked formulas, and naming conventions define who can change what, and when.</li>
+      <li><strong>Incremental digital transition:</strong> the bet is that stronger adoption comes from wrapping control and integration around existing routines, not replacing them outright.</li>
     </ul>
 
   </section>
@@ -197,7 +197,7 @@ Start the next payment period, carrying forward cumulative quantities</div>
     <h2>Current status and limitations</h2>
     
     <div class="status-box">
-      <span class="tag">Working prototype — actively developed</span>
+      <span class="tag">Working prototype: actively developed</span>
       <p>Valora runs locally as a working prototype and has not been deployed as a production platform.</p>
     </div>
         <ul>
@@ -215,7 +215,7 @@ Start the next payment period, carrying forward cumulative quantities</div>
     <h2>Reflection</h2>
     
     <p>Valora began as a technical attempt to improve progress-payment documents; the deeper issue turned out
-    to be organisational — who owns the process, how standards are maintained, which familiar routines should
+    to be organisational: who owns the process, how standards are maintained, which familiar routines should
     be preserved, and when incremental integration beats wholesale replacement.</p>
     <p class="pull">Software functionality does not automatically become organisational capability. A
     technically complete system can still fail to create value if users reject its workflow, management
@@ -262,7 +262,7 @@ Start the next payment period, carrying forward cumulative quantities</div>
         if (navigator.clipboard && window.isSecureContext) {
           e.preventDefault();
           navigator.clipboard.writeText(email).then(function () {
-            showToast('Copied — ' + email);
+            showToast('Copied: ' + email);
           }).catch(function () {
             window.location.href = link.getAttribute('href');
           });
