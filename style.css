@@ -788,6 +788,13 @@
   .hero-cover figcaption a{ text-decoration:none; }
 
   .architecture-section{ padding-top:78px; }
+  main{ display:flex; flex-direction:column; }
+  #research{ order:1; }
+  #publications{ order:2; }
+  #work{ order:3; }
+  #architecture{ order:4; }
+  #experience{ order:5; }
+  #education{ order:6; }
   .architecture-grid{
     display:grid;
     grid-template-columns:repeat(2, minmax(0,1fr));
